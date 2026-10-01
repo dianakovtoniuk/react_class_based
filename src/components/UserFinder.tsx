@@ -13,7 +13,6 @@ type UserFinderState = {
 
 class UserFinder extends Component<object, UserFinderState> {
   static contextType = UsersContext;
-  declare context: ContextType<typeof UsersContext>;
 
   constructor(props: object) {
     super(props);
@@ -23,15 +22,19 @@ class UserFinder extends Component<object, UserFinderState> {
     };
   }
 
+  get usersContext() {
+    return this.context as ContextType<typeof UsersContext>;
+  }
+
   componentDidMount() {
     // Send http request...
-    this.setState({ filteredUsers: this.context.users });
+    this.setState({ filteredUsers: this.usersContext.users });
   }
 
   componentDidUpdate(_prevProps: object, prevState: UserFinderState) {
     if (prevState.searchTerm !== this.state.searchTerm) {
       this.setState({
-        filteredUsers: this.context.users.filter((user) =>
+        filteredUsers: this.usersContext.users.filter((user) =>
           user.name.includes(this.state.searchTerm)
         ),
       });
@@ -49,12 +52,3 @@ class UserFinder extends Component<object, UserFinderState> {
           <input type="search" onChange={this.searchChangeHandler.bind(this)} />
         </div>
         <ErrorBoundary>
-          <Users users={this.state.filteredUsers} />
-        </ErrorBoundary>
-      </Fragment>
-    );
-  }
-}
-
-
-export default UserFinder;
