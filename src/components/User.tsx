@@ -7,13 +7,15 @@ type UserProps = {
 };
 
 class User extends Component<UserProps> {
+  componentWillUnmount() {
+    console.log('User will unmount!');
+  }
+
   render() {
     return <li className={classes.user}>{this.props.name}</li>;
   }
 }
 
-// const User = (props) => {
-//   return <li className={classes.user}>{props.name}</li>;
-// };
+// закоментований функціональний варіант без змін
 
 export default User;
