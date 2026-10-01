@@ -22,6 +22,17 @@ class Users extends Component<UsersProps, UsersState> {
     };
   }
 
+  componentDidUpdate() {
+    // try {
+    //   someCodeWhichMightFail()
+    // } catch (err) {
+    //   // handle error
+    // }
+    if (this.props.users.length === 0) {
+      throw new Error('No users provided!');
+    }
+  }
+
   toggleUsersHandler() {
     // this.state.showUsers = false; // NOT!
     this.setState((curState) => {
@@ -49,6 +60,5 @@ class Users extends Component<UsersProps, UsersState> {
   }
 }
 
-// закоментований функціональний варіант без змін
 
 export default Users;
