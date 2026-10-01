@@ -1,6 +1,6 @@
 # Class based React User Finder
 
-A learning project built with React and TypeScript that uses class-based components. It shows a list of users with a search field and a button for hiding the list, and it demonstrates lifecycle methods, context and error boundaries.
+A project built with React and TypeScript that uses class-based components. It shows a list of users with a search field and a button for hiding the list, and it demonstrates lifecycle methods, context and error boundaries.
 
 ## Features
 
